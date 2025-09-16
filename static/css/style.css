@@ -10,12 +10,23 @@
 }
 
 /* --- Basic Reset & Typography --- */
+html {
+    box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
 body {
     font-family: var(--font-body);
     margin: 0;
     background-color: var(--black);
     color: var(--white);
     overflow-x: hidden;
+    /* CRITICAL FIX: Prevents horizontal scroll caused by animations or modals */
     scroll-behavior: smooth;
 }
 
@@ -30,7 +41,6 @@ body {
 }
 
 .section-title {
-    /* Fluid typography: scales font size between a min and max based on viewport width */
     font-size: clamp(2rem, 6vw, 2.8rem);
     text-align: center;
     margin-bottom: 20px;
@@ -57,10 +67,7 @@ body {
 /* --- Preloader & Navigation --- */
 #preloader {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background-color: var(--black);
     z-index: 9999;
     display: flex;
@@ -140,7 +147,6 @@ body {
 .hero-overlay {
     position: absolute;
     inset: 0;
-    /* shorthand for top, right, bottom, left = 0 */
     background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(103, 58, 183, 0.5));
 }
 
@@ -334,9 +340,7 @@ body {
 .testimonials-image img {
     width: 100%;
     max-width: 350px;
-    /* Reduced size */
     aspect-ratio: 1 / 1;
-    /* Makes it a square */
     object-fit: cover;
     border-radius: 10px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
@@ -379,7 +383,6 @@ body {
 
 .form-group {
     margin-bottom: 20px;
-    /* Added spacing */
 }
 
 #contact-form input,
@@ -391,32 +394,49 @@ body {
     border-radius: 5px;
     border: 1px solid #ddd;
     background-color: #f9f9f9;
-    box-sizing: border-box;
-    /* Ensures padding doesn't affect width */
     font-family: var(--font-body);
 }
 
-/* --- Modals --- */
+/* --- Modals (RESPONSIVENESS FIX) --- */
 .modal {
     display: none;
     position: fixed;
     z-index: 2000;
     inset: 0;
-    width: 100%;
-    height: 100%;
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(5px);
+    /* CRITICAL FIX: Use flexbox for robust centering */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    /* Provides safe space on edges */
+    visibility: hidden;
+    /* Use visibility for smoother transitions */
+    opacity: 0;
+    transition: visibility 0s 0.2s, opacity 0.2s linear;
+}
+
+.modal.active {
+    visibility: visible;
+    opacity: 1;
+    transition: opacity 0.2s linear;
 }
 
 .modal-content {
     background-color: var(--white);
-    margin: 10% auto;
-    padding: 30px;
     border-radius: 10px;
-    max-width: 500px;
     text-align: center;
-    animation: zoomIn 0.3s ease;
     position: relative;
+    /* CRITICAL FIX: Let the modal shrink/grow but not exceed limits */
+    width: 100%;
+    max-width: 500px;
+    max-height: 90vh;
+    /* Prevent modal from being taller than the screen */
+    overflow-y: auto;
+    /* Allow content inside to scroll if needed */
+    padding: 30px;
+    animation: zoomIn 0.3s ease;
 }
 
 .close-button {
@@ -431,18 +451,20 @@ body {
 
 #modal-img {
     max-width: 50%;
-    height: auto;
+    max-height: 150px;
+    object-fit: contain;
     margin-bottom: 20px;
 }
 
 #modal-title {
-    font-size: 1.8rem;
+    font-size: clamp(1.5rem, 5vw, 1.8rem);
     color: var(--black);
 }
 
 #modal-description {
     color: #666;
     margin-bottom: 25px;
+    font-size: 0.95rem;
 }
 
 .modal-actions {
@@ -470,11 +492,13 @@ body {
 
 @keyframes zoomIn {
     from {
-        transform: scale(0.8);
+        transform: scale(0.9);
+        opacity: 0;
     }
 
     to {
         transform: scale(1);
+        opacity: 1;
     }
 }
 
@@ -496,7 +520,6 @@ body {
 .star-rating i.hover,
 .star-rating i.selected {
     color: #FFC107;
-    /* Gold color for stars */
 }
 
 /* --- Footer & Scroll Button --- */
@@ -506,6 +529,7 @@ footer {
     background-color: var(--black);
     color: var(--white);
 }
+
 .footer-link {
     color: var(--white);
     text-decoration: none;
@@ -550,7 +574,6 @@ footer {
 @media (max-width: 768px) {
     .nav-links {
         display: none;
-        /* For a real site, implement a burger menu here */
     }
 
     .about-grid {
@@ -577,9 +600,5 @@ footer {
         gap: 40px;
     }
 
-    .modal-content {
-        width: 90%;
-        margin: 15% auto;
-        padding: 25px;
-    }
+    /* No need to resize modal here anymore, the flexbox approach handles all screen sizes */
 }
