@@ -9,7 +9,15 @@
     --font-body: 'Poppins', sans-serif;
 }
 
-/* --- Basic Reset & Typography --- */
+/* --- Basic Reset & Typography (WITH VIEWPORT LOCK FIX) --- */
+html,
+body {
+    /* CRITICAL FIX: This is the key to preventing all unwanted horizontal movement. */
+    /* It tells the browser that the document itself should never scroll sideways. */
+    overflow-x: hidden;
+    width: 100%;
+}
+
 html {
     box-sizing: border-box;
 }
@@ -25,9 +33,9 @@ body {
     margin: 0;
     background-color: var(--black);
     color: var(--white);
-    overflow-x: hidden;
-    /* CRITICAL FIX: Prevents horizontal scroll caused by animations or modals */
     scroll-behavior: smooth;
+    position: relative;
+    /* Ensures proper stacking context */
 }
 
 .container {
@@ -107,6 +115,7 @@ body {
 }
 
 .logo {
+    margin-left: 10px ;
     font-size: 1.5rem;
     color: var(--white);
     text-decoration: none;
@@ -224,6 +233,11 @@ body {
 
 .product-slider.active {
     display: block;
+}
+
+/* The Swiper.js library automatically handles touch events within this container */
+.swiper-container {
+    width: 100%;
 }
 
 .product-slider .swiper-slide {
@@ -397,22 +411,18 @@ body {
     font-family: var(--font-body);
 }
 
-/* --- Modals (RESPONSIVENESS FIX) --- */
+/* --- Modals --- */
 .modal {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: fixed;
     z-index: 2000;
     inset: 0;
     background-color: rgba(0, 0, 0, 0.7);
     backdrop-filter: blur(5px);
-    /* CRITICAL FIX: Use flexbox for robust centering */
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 20px;
-    /* Provides safe space on edges */
     visibility: hidden;
-    /* Use visibility for smoother transitions */
     opacity: 0;
     transition: visibility 0s 0.2s, opacity 0.2s linear;
 }
@@ -428,13 +438,10 @@ body {
     border-radius: 10px;
     text-align: center;
     position: relative;
-    /* CRITICAL FIX: Let the modal shrink/grow but not exceed limits */
     width: 100%;
     max-width: 500px;
     max-height: 90vh;
-    /* Prevent modal from being taller than the screen */
     overflow-y: auto;
-    /* Allow content inside to scroll if needed */
     padding: 30px;
     animation: zoomIn 0.3s ease;
 }
@@ -599,6 +606,4 @@ footer {
     .contact-grid {
         gap: 40px;
     }
-
-    /* No need to resize modal here anymore, the flexbox approach handles all screen sizes */
 }
