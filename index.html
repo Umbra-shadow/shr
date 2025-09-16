@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SHR by Sharielle - Luxury Hair Care</title>
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Poppins:wght@300;400;600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div id="preloader">
+        <div class="spinner"></div>
+    </div>
+
+    <header id="navbar">
+        <nav class="container">
+            <a href="#hero" class="logo">SHR by Sharielle</a>
+            <ul class="nav-links">
+                <li><a href="#hero" class="nav-link active">Home</a></li>
+                <li><a href="#products" class="nav-link">Products</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#testimonials" class="nav-link">Reviews</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="swiper-container hero-slider">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide hero-slide" style="background-image: url('static/images/hero-bg-1.jpg');">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <h1>SHR by Sharielle</h1>
+                            <p>Embrace the Elegance of Natural Hair</p>
+                            <a href="#products" class="cta-button">Discover Our Collection</a>
+                        </div>
+                    </div>
+                    <div class="swiper-slide hero-slide" style="background-image: url('static/images/hero-bg-2.jpg');">
+                        <div class="hero-overlay"></div>
+                        <div class="hero-content">
+                            <h1>SHR by Sharielle</h1>
+                            <p>We care about the health and vitality of your hair, from root to tip.</p>
+                            <a href="#about" class="cta-button">Learn About Us</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+        </section>
+
+        <!-- Our Products Section -->
+        <section id="products" class="section-padding bg-white">
+            <div class="container">
+                <h2 class="section-title">Curated For You</h2>
+                <p class="section-intro">Explore our collections, meticulously crafted for every step of your natural
+                    hair journey. Find the perfect blend of nature and luxury.</p>
+                <div class="product-filters">
+                    <button class="filter-btn active" data-filter="locs">For Your Locs</button>
+                    <button class="filter-btn" data-filter="twists">For Twist Outs</button>
+                    <button class="filter-btn" data-filter="protective">Protective Styles</button>
+                </div>
+                <div class="product-sliders">
+                    <div class="swiper-container product-slider active" id="slider-locs">
+                        <div class="swiper-wrapper"></div>
+                    </div>
+                    <div class="swiper-container product-slider" id="slider-twists">
+                        <div class="swiper-wrapper"></div>
+                    </div>
+                    <div class="swiper-container product-slider" id="slider-protective">
+                        <div class="swiper-wrapper"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us Section -->
+        <section id="about" class="section-padding bg-white">
+            <div class="container about-grid">
+                <div class="about-card">
+                    <img src="static/images/shrLogo.png" alt="Natural ingredients">
+                    <h3>Our Heritage</h3>
+                    <p>SHR was born from a passion for celebrating natural hair. Our mission is to provide luxurious
+                        products that nourish, protect, and empower your unique hair journey.</p>
+                </div>
+                <div class="about-divider"></div>
+                <div class="about-card">
+                    <img src="static/images/shrOwner.jpg" alt="Founder Sharielle">
+                    <h3>About Me</h3>
+                    <p>As a lifelong advocate for natural hair, I blend the finest ingredients with modern science. Each
+                        formula is crafted to bring you healthy hair that feels as good as it looks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section-padding bg-white">
+            <div class="container testimonials-grid">
+                <div class="testimonial-content">
+                    <h2 class="section-title">What Our Clients Say</h2>
+                    <div class="testimonial-carousel">
+                        <div class="testimonial-slide active">
+                            <div class="stars">★★★★★</div>
+                            <p>"The twist cream is a game-changer! My hair has never felt so soft and defined."</p>
+                            <h4>— Jessica M.</h4>
+                        </div>
+                        <div class="testimonial-slide">
+                            <div class="stars">★★★★★</div>
+                            <p>"Finally, a loc oil that isn't greasy but gives a beautiful shine. I am obsessed!"</p>
+                            <h4>— David R.</h4>
+                        </div>
+                    </div>
+                    <button class="cta-button" id="leave-review-btn">Leave a Review</button>
+                </div>
+                <div class="testimonials-image">
+                    <img src="static/images/woman.jpg" alt="Woman with beautiful natural hair">
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us Section -->
+        <section id="contact" class="section-padding bg-white">
+            <div class="container contact-grid">
+                <div class="contact-info">
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p>Have a question or want to collaborate? We would love to hear from you. Reach out via the form or
+                        connect with us on social media.</p>
+                    <div class="social-icons">
+                        <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <form id="contact-form" action="YOUR_BACKEND_ENDPOINT" method="POST">
+                        <div class="form-group"><input type="text" id="name" name="name" placeholder="Your Name"
+                                required></div>
+                        <div class="form-group"><input type="email" id="email" name="email" placeholder="Your Email"
+                                required></div>
+                        <div class="form-group"><textarea id="message" name="message" rows="5"
+                                placeholder="Your Message" required></textarea></div>
+                        <button type="submit" class="cta-button">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Asumerix. All Rights Reserved.</p>
+            <div class="footer-links">
+                <a href="#products" style="color: white;">Products</a>
+                <a href="#about" style="color: white;">About</a>
+                <a href="#contact" style="color: white;">Contact</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Modal -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <img id="modal-img" src="" alt="Product Image">
+            <h3 id="modal-title"></h3>
+            <p id="modal-description"></p>
+            <div class="modal-actions">
+                <button id="modal-contact-btn" class="cta-button">Inquire About Product</button>
+                <button id="modal-review-btn" class="secondary-button">Leave a Review</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Review Modal -->
+    <div id="review-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h3 style="color: black;">Share Your Experience</h3>
+            <form id="review-form">
+                <div class="form-group">
+                    <input type="text" id="review-name" name="review-name" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label style="color: black;">Your Rating</label>
+                    <div class="star-rating">
+                        <i class="fa-solid fa-star" data-value="1"></i>
+                        <i class="fa-solid fa-star" data-value="2"></i>
+                        <i class="fa-solid fa-star" data-value="3"></i>
+                        <i class="fa-solid fa-star" data-value="4"></i>
+                        <i class="fa-solid fa-star" data-value="5"></i>
+                    </div>
+                    <input type="hidden" name="rating" id="rating-value" value="0">
+                </div>
+                <div class="form-group">
+                    <textarea id="review-message" name="review-message" rows="4" placeholder="Your Review"
+                        required></textarea>
+                </div>
+                <button type="submit" class="cta-button">Submit Review</button>
+            </form>
+        </div>
+    </div>
+
+    <button id="scrollToTopBtn" aria-label="Scroll to top"><i class="fas fa-arrow-up"></i></button>
+
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="static/js/index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,585 @@
+/* --- Global Styles & Variables --- */
+:root {
+    --white: #FFFFFF;
+    --black: #000000;
+    --deep-purple: #673AB7;
+    --silver: #C0C0C0;
+    --text-dark: #333333;
+    --font-heading: 'Cinzel', serif;
+    --font-body: 'Poppins', sans-serif;
+}
+
+/* --- Basic Reset & Typography --- */
+body {
+    font-family: var(--font-body);
+    margin: 0;
+    background-color: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.section-padding {
+    padding: 80px 0;
+}
+
+.section-title {
+    /* Fluid typography: scales font size between a min and max based on viewport width */
+    font-size: clamp(2rem, 6vw, 2.8rem);
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-intro {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 50px auto;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.bg-white {
+    background-color: var(--white);
+    color: var(--text-dark);
+}
+
+.bg-white .section-title {
+    color: var(--black);
+}
+
+/* --- Preloader & Navigation --- */
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--black);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid var(--silver);
+    border-top: 5px solid var(--deep-purple);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+}
+
+#navbar nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+
+.logo {
+    font-size: 1.5rem;
+    color: var(--white);
+    text-decoration: none;
+    font-family: var(--font-heading);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 40px;
+    margin: 0;
+}
+
+.nav-link {
+    color: var(--white);
+    text-decoration: none;
+    position: relative;
+}
+
+/* --- Hero Section --- */
+#hero,
+.hero-slider,
+.hero-slide {
+    height: 100vh;
+    width: 100%;
+}
+
+.hero-slide {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    /* shorthand for top, right, bottom, left = 0 */
+    background: linear-gradient(45deg, rgba(0, 0, 0, 0.8), rgba(103, 58, 183, 0.5));
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+}
+
+.hero-content h1 {
+    font-size: clamp(2.8rem, 10vw, 4.5rem);
+    margin: 0 0 20px 0;
+}
+
+.hero-content p {
+    font-size: clamp(1.1rem, 4vw, 1.5rem);
+    margin: 20px 0 40px;
+    max-width: 700px;
+}
+
+.hero-slider .swiper-pagination-bullet {
+    background: var(--white);
+}
+
+.hero-slider .swiper-pagination-bullet-active {
+    background: var(--deep-purple);
+}
+
+.cta-button {
+    background-color: var(--deep-purple);
+    color: var(--white);
+    padding: 15px 35px;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.cta-button:hover {
+    background-color: #512DA8;
+    transform: translateY(-3px);
+}
+
+/* --- Products Section --- */
+.product-filters {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+    background: transparent;
+    border: 2px solid #ddd;
+    color: var(--text-dark);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.filter-btn.active {
+    background-color: var(--deep-purple);
+    color: var(--white);
+    border-color: var(--deep-purple);
+}
+
+.product-slider {
+    display: none;
+}
+
+.product-slider.active {
+    display: block;
+}
+
+.product-slider .swiper-slide {
+    width: 220px;
+}
+
+.product-card {
+    background: var(--white);
+    border-radius: 10px;
+    text-align: center;
+    padding: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s;
+    cursor: pointer;
+    height: 100%;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    width: 100%;
+    height: 160px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 1rem;
+    color: var(--black);
+}
+
+.product-card p {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+/* --- About Us Section --- */
+.about-grid {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+}
+
+.about-card {
+    padding: 30px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    text-align: center;
+    flex: 1;
+}
+
+.about-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid var(--deep-purple);
+}
+
+.about-card h3 {
+    font-size: 1.8rem;
+    color: var(--black);
+}
+
+.about-card p {
+    color: #555;
+    line-height: 1.8;
+}
+
+.about-divider {
+    width: 2px;
+    background-color: #eee;
+}
+
+/* --- Testimonials Section --- */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.testimonial-content .section-title {
+    text-align: left;
+}
+
+.testimonial-slide {
+    display: none;
+    animation: fadeEffect 1s;
+}
+
+.testimonial-slide.active {
+    display: block;
+}
+
+.stars {
+    color: var(--deep-purple);
+    font-size: 1.2rem;
+}
+
+.testimonial-slide p {
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+#leave-review-btn {
+    margin-top: 30px;
+}
+
+.testimonials-image img {
+    width: 100%;
+    max-width: 350px;
+    /* Reduced size */
+    aspect-ratio: 1 / 1;
+    /* Makes it a square */
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin: 0 auto;
+}
+
+@keyframes fadeEffect {
+    from {
+        opacity: .4
+    }
+
+    to {
+        opacity: 1
+    }
+}
+
+/* --- Contact & Forms --- */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.contact-info .section-title {
+    text-align: left;
+}
+
+.social-icons a {
+    color: var(--text-dark);
+    font-size: 1.5rem;
+    margin-right: 20px;
+    transition: all 0.3s;
+}
+
+.social-icons a:hover {
+    color: var(--deep-purple);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    /* Added spacing */
+}
+
+#contact-form input,
+#contact-form textarea,
+#review-form input,
+#review-form textarea {
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    box-sizing: border-box;
+    /* Ensures padding doesn't affect width */
+    font-family: var(--font-body);
+}
+
+/* --- Modals --- */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: var(--white);
+    margin: 10% auto;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    text-align: center;
+    animation: zoomIn 0.3s ease;
+    position: relative;
+}
+
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#modal-img {
+    max-width: 50%;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+#modal-title {
+    font-size: 1.8rem;
+    color: var(--black);
+}
+
+#modal-description {
+    color: #666;
+    margin-bottom: 25px;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.secondary-button {
+    background: transparent;
+    border: 2px solid var(--deep-purple);
+    color: var(--deep-purple);
+    padding: 12px 25px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.secondary-button:hover {
+    background: var(--deep-purple);
+    color: var(--white);
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.8);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* --- Review Modal Specifics --- */
+.star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+    font-size: 1.8rem;
+}
+
+.star-rating i {
+    color: var(--silver);
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-rating i.hover,
+.star-rating i.selected {
+    color: #FFC107;
+    /* Gold color for stars */
+}
+
+/* --- Footer & Scroll Button --- */
+footer {
+    text-align: center;
+    padding: 40px 0;
+    background-color: var(--black);
+    color: var(--white);
+}
+.footer-link {
+    color: var(--white);
+    text-decoration: none;
+    position: relative;
+}
+
+#scrollToTopBtn {
+    display: none;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 99;
+    border: none;
+    background-color: var(--deep-purple);
+    color: var(--white);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* --- RESPONSIVENESS --- */
+@media (max-width: 992px) {
+
+    .testimonials-grid,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .testimonial-content .section-title,
+    .contact-info .section-title {
+        text-align: center;
+    }
+
+    .testimonials-image {
+        margin-top: 40px;
+    }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+        /* For a real site, implement a burger menu here */
+    }
+
+    .about-grid {
+        flex-direction: column;
+    }
+
+    .about-divider {
+        display: none;
+    }
+
+    .section-padding {
+        padding: 60px 0;
+    }
+
+    .product-slider .swiper-slide {
+        width: 200px;
+    }
+
+    .testimonials-grid {
+        gap: 20px;
+    }
+
+    .contact-grid {
+        gap: 40px;
+    }
+
+    .modal-content {
+        width: 90%;
+        margin: 15% auto;
+        padding: 25px;
+    }
+}
